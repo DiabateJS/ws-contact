@@ -37,14 +37,14 @@ class ContactManager {
     }
 
     function getAll(){
-        $sql = "select id,nom,tel,email,adresse,commentaire from personnes";
+        $sql = Constants::$SQL_ALL_CONTACT;
         $entete = array("id","nom","tel","email","adresse","commentaire");
         $result = $this->bdManager->executeSelect($sql, $entete);
         return $result;
     }
 
     function getById($id){
-        $sql = "select id,nom,tel,email,adresse,commentaire from personnes where id = :id";
+        $sql = Constants::$SQL_CONTACT_BY_ID;
         $entete = array("id","nom","tel","email","adresse","commentaire");
         $dicoParam = array (
             "id" => $id
