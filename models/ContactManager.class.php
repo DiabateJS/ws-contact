@@ -11,7 +11,7 @@ class ContactManager {
     }
 
     function createContact($contact) {
-        $sql = "insert into personnes(nom,tel,email,adresse,commentaire) value (:nom,:tel,:email,:adresse,:commentaire)";
+        $sql = Constants::$SQL_CREATE_CONTACT;
         $dicoParam = array (
             "nom" => $contact->nom,
             "tel" => $contact->tel,
@@ -37,14 +37,14 @@ class ContactManager {
     }
 
     function getAll(){
-        $sql = "";
+        $sql = "select id,nom,tel,email,adresse,commentaire from personnes";
         $entete = array("id","nom","tel","email","adresse","commentaire");
         $result = $this->bdManager->executeSelect($sql, $entete);
         return $result;
     }
 
     function getById($id){
-        $sql = "";
+        $sql = "select id,nom,tel,email,adresse,commentaire from personnes where id = :id";
         $entete = array("id","nom","tel","email","adresse","commentaire");
         $dicoParam = array (
             "id" => $id

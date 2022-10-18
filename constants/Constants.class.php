@@ -49,7 +49,7 @@ class Constants {
     );
 
     //SQL
-    public static $SQL_CREATE_CONTACT = "";
+    public static $SQL_CREATE_CONTACT = "insert into personnes(nom,tel,email,adresse,commentaire) value (:nom,:tel,:email,:adresse,:commentaire)";
     public static $SQL_ALL_CONTACT = "";
     public static $SQL_CONTACT_BY_ID = "";
     public static $SQL_CONTACT_UPDATE = "";

@@ -18,32 +18,30 @@ class ContactController {
     }
 
     public function getAll(){
-        /*$response = Constants::$DEFAULT_RESPONSE;
-        $cvManager = new CvManager();
-        $resultat = $cvManager->getAll();
+        $response = Constants::$DEFAULT_RESPONSE;
+        $contactManager = new ContactManager();
+        $resultat = $contactManager->getAll();
         if (count($resultat["errors"]) == 0){
             $response["code"] = Constants::$SUCESS_CODE;
             $response["resultat"] = $resultat["data"];
         }
-        return $response;*/
-        return null;
+        return $response;
     }
 
     public function getById(){
-        /*$begin = $this->route_info[0];
+        $begin = $this->route_info[0];
         $id = $this->route_info[1];
 
         $response = Constants::$DEFAULT_RESPONSE;
-        if ($begin == "cvs" && strlen($id) > 0){
-            $cvManager = new CvManager();
-            $resultat = $cvManager->getById($id);
+        if ($begin == "contacts" && strlen($id) > 0){
+            $contactManager = new ContactManager();
+            $resultat = $contactManager->getById($id);
             if (count($resultat["errors"]) == 0){
                 $response["code"] = Constants::$SUCESS_CODE;
                 $response["resultat"] = $resultat;
             }
         }
-        return $response;*/
-        return null;
+        return $response;
     }
 
     public function create(){
@@ -111,7 +109,7 @@ class ContactController {
             }
         }
 
-        if ( $this->route_info[0] == "cvs" &&  $this->route_info[1] != "" ){
+        if ( $this->route_info[0] == "contacts" &&  $this->route_info[1] != "" ){
             if ( $this->method == Constants::$GET ){
                 $json = json_encode($this->getById());
             }
