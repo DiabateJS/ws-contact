@@ -24,11 +24,15 @@ if ($queryMethod == Constants::$POST){
     $queryStringDico[Constants::$POST] = $tab;
 }
 if ($queryMethod == Constants::$PUT){
-    parse_str(file_get_contents('php://input'), $queryStringDico[Constants::$PUT]);
-    $tab = array_keys($queryStringDico[Constants::$PUT])[0];
-    $tab = str_replace("_"," ",$tab);
-    $tab = json_decode($tab, true);
-    $queryStringDico[Constants::$PUT] = $tab;
+    $query_string = $_SERVER["QUERY_STRING"];
+    $query_string = str_replace("%20"," ",$query_string);
+    $tab = explode("&",$query_string); 
+    $tab_res = array();
+    for ($i = 0; $i < count($tab); $i++) {
+        $tab_tmp = explode("=",$tab[$i]);
+        $tab_res[$tab_tmp[0]] = $tab_tmp[1]; 
+    }
+    $queryStringDico[Constants::$PUT] = $tab_res;
 }
 if ($queryMethod == Constants::$DELETE){
     parse_str(file_get_contents('php://input'), $queryStringDico[Constants::$DELETE]);

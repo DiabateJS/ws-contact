@@ -52,7 +52,8 @@ class Constants {
     public static $SQL_CREATE_CONTACT = "insert into personnes(nom,tel,email,adresse,commentaire) value (:nom,:tel,:email,:adresse,:commentaire)";
     public static $SQL_ALL_CONTACT = "select id,nom,tel,email,adresse,commentaire from personnes";
     public static $SQL_CONTACT_BY_ID = "select id,nom,tel,email,adresse,commentaire from personnes where id = :id";
-    public static $SQL_CONTACT_UPDATE = "";
+    public static $SQL_CONTACT_UPDATE = "update personnes set nom = :nom, tel = :tel, email = :email, adresse = :adresse, commentaire = :commentaire where id = :id";
+    public static $SQL_CONTACT_DELETE = "";
 
 }
 ?>

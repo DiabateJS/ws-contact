@@ -24,8 +24,9 @@ class ContactManager {
     }
 
     function update($contact) {
-        $sql = "";
+        $sql = Constants::$SQL_CONTACT_UPDATE;
         $dicoParam = array (
+            "id" => $contact->id,
             "nom" => $contact->nom,
             "tel" => $contact->tel,
             "email" => $contact->email,

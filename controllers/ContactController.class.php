@@ -65,31 +65,26 @@ class ContactController {
     }
 
     public function update(){
-        /*$response = Constants::$DEFAULT_RESPONSE;
+        $response = Constants::$DEFAULT_RESPONSE;
         $dico = $this->dico[Constants::$PUT];
-        $titre = $dico["titre"];
-        $poste = $dico["poste"];
-        $annee = $dico["annee"];
-        $dispo = $dico["dispo"];
-        $intro = $dico["intro"];
-        $idCv = $this->route_info[1];
-        $userid = 1;
-        $experiences = array(); 
-        $formations = array();
-        $langues = array();
+        $nom = $dico["nom"];
+        $tel = $dico["tel"];
+        $email = $dico["email"];
+        $adresse = $dico["adresse"];
+        $commentaire = $dico["commentaire"];
+        $id = $this->route_info[1];
 
-        $cv = new Cv($titre, $poste, $annee, $dispo, $intro, $userid,$experiences, $formations, $langues);
-        $cv->id = $idCv;
-        $cvManager = new CvManager();
-        $resultat = $cvManager->update($cv);
+        $contact = new Contact($nom, $tel, $email, $adresse, $commentaire);
+        $contact->id = $id;
+        $contactManager = new ContactManager();
+        $resultat = $contactManager->update($contact);
 
         $response["code"] = Constants::$SERVER_ERROR_CODE;
         $response["resultat"] = $response["data"];
         if (count($resultat["errors"]) == 0){
             $response["code"] = Constants::$SUCESS_CODE;
         }
-        return $response;*/
-        return null;
+        return $response;
     }
 
     public function delete(){
