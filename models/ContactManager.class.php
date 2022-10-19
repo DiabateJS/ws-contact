@@ -37,6 +37,15 @@ class ContactManager {
         return $result;
     }
 
+    function delete($id) {
+        $sql = Constants::$SQL_CONTACT_DELETE;
+        $dicoParam = array (
+            "id" => $id
+        );
+        $result = $this->bdManager->executePreparedQuery($sql, $dicoParam);
+        return $result;
+    }
+
     function getAll(){
         $sql = Constants::$SQL_ALL_CONTACT;
         $entete = array("id","nom","tel","email","adresse","commentaire");

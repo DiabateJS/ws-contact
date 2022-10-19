@@ -88,9 +88,16 @@ class ContactController {
     }
 
     public function delete(){
-        if ($this->method == Constants::$DELETE){
-
+        $response = Constants::$DEFAULT_RESPONSE;
+        $id = $this->route_info[1];
+        $contactManager = new ContactManager();
+        $resultat = $contactManager->delete($id);
+        $response["code"] = Constants::$SERVER_ERROR_CODE;
+        $response["resultat"] = $response["data"];
+        if (count($resultat["errors"]) == 0){
+            $response["code"] = Constants::$SUCESS_CODE;
         }
+        return $response;
     }
 
     public function getView(){
@@ -110,6 +117,9 @@ class ContactController {
             }
             if ( $this->method == Constants::$PUT ){
                 $json = json_encode($this->update());
+            }
+            if ( $this->method == Constants::$DELETE ){
+                $json = json_encode($this->delete());
             }
         }
         return $json;
